@@ -9,9 +9,8 @@ skinparam ClassFontColor #E0E0E0
 skinparam ClassAttributeFontColor #E0E0E0
 skinparam ClassStereotypeFontColor #90CAF9
 skinparam ClassHeaderBackgroundColor #252525
-skinparam NoteBackgroundColor #2C2C2C
-skinparam NoteBorderColor #444444
-skinparam NoteFontColor #E0E0E0
+skinparam PackageBackgroundColor #121212
+skinparam classAttributeIconSize 0
 
 class FilmNow {
   - filmes : Filme[100]
@@ -53,26 +52,4 @@ class HotList {
 FilmNow "1" *-- "100" Filme : contains >
 FilmNow "1" *-- "1" HotList : contains >
 HotList "1" o-- "0..10" Filme : references >
-
-note right of FilmNow
-  Menu: (A)Adicionar (M)Mostrar
-  (D)Detalhar (E)Exibir HotList
-  (H)Atribuir Hot (R)Remover Hot (S)Sair
-  Limite 100 posicoes (1..100).
-  Substitui se posicao ocupada.
-end note
-
-note right of Filme
-  Igualdade por nome + ano
-  (independe de local).
-  toString() = "nome, ano"
-end note
-
-note right of HotList
-  Capacidade 10.
-  Filme aparece no max 1x.
-  Adicionar em pos ocupada substitui.
-  contem() via equals().
-  Detalhar mostra 🔥 se contem.
-end note
 @enduml
