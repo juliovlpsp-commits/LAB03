@@ -2,6 +2,9 @@ package com.filmnow;
 
 import java.util.Scanner;
 
+/**
+ * sistema filmnow
+ */
 public class FilmNow {
     private static final int MAX_FILMES = 100;
     private static final int MAX_HOTLIST = 10;
@@ -9,12 +12,18 @@ public class FilmNow {
     private HotList hotList;
     private Scanner scanner;
 
+    /**
+     * cria filmnow
+     */
     public FilmNow() {
         this.filmes = new Filme[MAX_FILMES];
         this.hotList = new HotList();
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * executa o sistema
+     */
     public void executar() {
         boolean executando = true;
         while (executando) {
@@ -100,9 +109,7 @@ public class FilmNow {
 
     private void mostrarTodos() {
         for (int i = 0; i < filmes.length; i++) {
-            if (filmes[i] != null) {
-                System.out.println((i + 1) + " - " + filmes[i].getNome());
-            }
+            if (filmes[i] != null) System.out.println((i + 1) + " - " + filmes[i].getNome());
         }
     }
 
@@ -118,7 +125,7 @@ public class FilmNow {
         Filme filme = filmes[posicao - 1];
         boolean isHot = hotList.contem(filme);
 
-        String prefixo = isHot ? "🔥 " : "";
+        String prefixo = isHot ? "HOT " : "";
         System.out.println(prefixo + filme.getNome() + ", " + filme.getAno());
         System.out.println(filme.getLocal());
     }
@@ -161,6 +168,10 @@ public class FilmNow {
         hotList.remover(posicao);
     }
 
+    /**
+     * main do sistema
+     * @param args argumentos
+     */
     public static void main(String[] args) {
         FilmNow app = new FilmNow();
         app.executar();

@@ -1,5 +1,8 @@
 package com.filmnow;
 
+/**
+ * hotlist com 10 filmes
+ */
 public class HotList {
     private static final int MAX_HOTLIST = 10;
     private Filme[] filmes;
@@ -8,37 +11,44 @@ public class HotList {
         this.filmes = new Filme[MAX_HOTLIST];
     }
 
+    /**
+     * adiciona filme na posicao
+     * @param filme filme a adicionar
+     * @param posicao posicao 1 a 10
+     */
     public void adicionar(Filme filme, int posicao) {
-        // Remove o filme de qualquer posição anterior na HotList
         for (int i = 0; i < filmes.length; i++) {
-            if (filmes[i] != null && filmes[i].equals(filme)) {
-                filmes[i] = null;
-            }
+            if (filmes[i] != null && filmes[i].equals(filme)) filmes[i] = null;
         }
         filmes[posicao - 1] = filme;
     }
 
+    /**
+     * remove da hotlist
+     * @param posicao posicao 1 a 10
+     */
     public void remover(int posicao) {
-        if (posicao >= 1 && posicao <= MAX_HOTLIST) {
-            filmes[posicao - 1] = null;
-        }
+        if (posicao >= 1 && posicao <= MAX_HOTLIST) filmes[posicao - 1] = null;
     }
 
+    /**
+     * verifica se contem filme
+     * @param filme filme a buscar
+     * @return true se contem
+     */
     public boolean contem(Filme filme) {
-        for (Filme f : filmes) {
-            if (f != null && f.equals(filme)) {
-                return true;
-            }
-        }
+        for (Filme f : filmes) if (f != null && f.equals(filme)) return true;
         return false;
     }
 
+    /**
+     * lista a hotlist
+     * @return lista formatada
+     */
     public String listar() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < filmes.length; i++) {
-            if (filmes[i] != null) {
-                sb.append((i + 1)).append(" - ").append(filmes[i].getNome()).append(", ").append(filmes[i].getAno()).append("\n");
-            }
+            if (filmes[i] != null) sb.append(i + 1).append(" - ").append(filmes[i].getNome()).append(", ").append(filmes[i].getAno()).append("\n");
         }
         return sb.toString().trim();
     }
