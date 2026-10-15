@@ -1,101 +1,55 @@
 ﻿@startuml FilmNow
-' FilmNow - Laboratorio 03 - LP2 / CEEI-UASC
-' Estilo identico ao Oficina_UML.puml (simulado_oficina/docs)
 left to right direction
 skinparam backgroundColor #121212
 skinparam shadowing false
 skinparam ArrowColor #BBBBBB
 skinparam ClassBackgroundColor #1E1E1E
 skinparam ClassBorderColor #3A3A3A
-skinparam ClassFontColor #E0E0E0
-skinparam ClassAttributeFontColor #E0E0E0
+skinparam ClassFontColor #FFFFFF
+skinparam ClassAttributeFontColor #FFFFFF
 skinparam ClassStereotypeFontColor #90CAF9
 skinparam ClassHeaderBackgroundColor #252525
-skinparam NoteBackgroundColor #2C2C2C
-skinparam NoteBorderColor #444444
-skinparam NoteFontColor #E0E0E0
-skinparam PackageBackgroundColor #1E1E1E
-skinparam PackageBorderColor #3A3A3A
-skinparam PackageFontColor #E0E0E0
+skinparam PackageBackgroundColor #121212
 skinparam classAttributeIconSize 0
-skinparam linetype ortho
 
-package "com.filmnow" {
-
-  class FilmNow {
-    - filmes : Filme[100]
-    - hotList : HotList
-    - scanner : Scanner
-    + FilmNow()
-    + executar() : void
-    + exibirMenu() : void
-    + adicionarFilme() : void
-    + mostrarTodos() : void
-    + detalharFilme() : void
-    + exibirHotList() : void
-    + atribuirHot() : void
-    + removerHot() : void
-  }
-
-  class Filme {
-    - nome : String
-    - ano : String
-    - local : String
-    + Filme(nome: String, ano: String, local: String)
-    + getNome() : String
-    + getAno() : String
-    + getLocal() : String
-    + equals(obj: Object) : boolean
-    + hashCode() : int
-    + toString() : String
-  }
-
-  class HotList {
-    - filmes : Filme[10]
-    + HotList()
-    + adicionar(filme: Filme, posicao: int) : void
-    + remover(posicao: int) : void
-    + contem(filme: Filme) : boolean
-    + listar() : String
-  }
-
-  class "FilmNowException" as FilmEx {
-    + FilmNowException(msg: String)
-  }
-
-  FilmEx --|> IllegalArgumentException
-
+class FilmNow {
+  - filmes : Filme[100]
+  - hotList : HotList
+  - scanner : Scanner
+  + FilmNow()
+  + executar() : void
+  + exibirMenu() : void
+  + adicionarFilme() : void
+  + mostrarTodos() : void
+  + detalharFilme() : void
+  + exibirHotList() : void
+  + atribuirHot() : void
+  + removerHot() : void
 }
 
-FilmNow "1" *-- "100" Filme : contem >
-FilmNow "1" *-- "1" HotList : contem >
-HotList "1" o-- "0..10" Filme : referencia >
-FilmNow ..> FilmEx : lanca
-HotList ..> FilmEx : lanca
+class Filme {
+  - nome : String
+  - ano : String
+  - local : String
+  + Filme(nome: String, ano: String, local: String)
+  + getNome() : String
+  + getAno() : String
+  + getLocal() : String
+  + equals(obj: Object) : boolean
+  + hashCode() : int
+  + toString() : String
+}
 
-note right of FilmNow
-  Menu: (A)Adicionar (M)Mostrar
-  (D)Detalhar (E)Exibir HotList
-  (H)Atribuir Hot (R)Remover Hot (S)Sair
-  Limite 100 filmes.
-  POSICAO INVALIDA se fora 1..100
-  FILME JA ADICIONADO se nome+ano duplicado
-  FILME INVALIDO se nome/local vazio
-end note
+class HotList {
+  - filmes : Filme[10]
+  + HotList()
+  + adicionar(filme: Filme, posicao: int) : void
+  + remover(posicao: int) : void
+  + contem(filme: Filme) : boolean
+  + listar() : String
+}
 
-note right of Filme
-  Igualdade por nome + ano.
-  Independe de local.
-  toString() = "nome, ano"
-end note
-
-note right of HotList
-  Capacidade 10.
-  Filme aparece no max 1x.
-  Ao adicionar em pos ocupada,
-  substitui. contem() via equals().
-  listar() retorna "pos - nome, ano"
-  Detalhar mostra 🔥 se contem.
-end note
-
+FilmNow "1" *-- "100" Filme
+FilmNow "1" *-- "1" HotList
+HotList "1" o-- "0..10" Filme
 @enduml
