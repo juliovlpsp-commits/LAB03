@@ -1,0 +1,45 @@
+﻿FilmNow
+composes Filme
+composes HotList
+---
+- filmes: Filme[100]
+- hotList: HotList
+- scanner: Scanner
+---
++ FilmNow()
++ executar(): void
++ exibirMenu(): void
++ adicionarFilme(): void
++ mostrarTodos(): void
++ detalharFilme(): void
++ exibirHotList(): void
++ atribuirHot(): void
++ removerHot(): void
+---
+
+Filme
+---
+- nome: String
+- ano: String
+- local: String
+---
++ Filme(nome: String, ano: String, local: String)
++ getNome(): String
++ getAno(): String
++ getLocal(): String
++ equals(obj: Object): boolean
++ hashCode(): int
++ toString(): String
+---
+
+HotList
+composes Filme
+---
+- filmes: Filme[10]
+---
++ HotList()
++ adicionar(filme: Filme, posicao: int): void
++ remover(posicao: int): void
++ contem(filme: Filme): boolean
++ listar(): String
+---
