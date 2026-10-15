@@ -2,9 +2,6 @@ package com.filmnow;
 
 import java.util.Scanner;
 
-/**
- * sistema filmnow
- */
 public class FilmNow {
     private static final int MAX_FILMES = 100;
     private static final int MAX_HOTLIST = 10;
@@ -12,18 +9,12 @@ public class FilmNow {
     private HotList hotList;
     private Scanner scanner;
 
-    /**
-     * cria filmnow
-     */
     public FilmNow() {
         this.filmes = new Filme[MAX_FILMES];
         this.hotList = new HotList();
         this.scanner = new Scanner(System.in);
     }
 
-    /**
-     * executa o sistema
-     */
     public void executar() {
         boolean executando = true;
         while (executando) {
@@ -168,10 +159,6 @@ public class FilmNow {
         hotList.remover(posicao);
     }
 
-    /**
-     * main do sistema
-     * @param args argumentos
-     */
     public static void main(String[] args) {
         FilmNow app = new FilmNow();
         app.executar();

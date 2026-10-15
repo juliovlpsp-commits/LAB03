@@ -2,20 +2,11 @@ package com.filmnow;
 
 import java.util.Objects;
 
-/**
- * filme com nome ano e local
- */
 public class Filme {
     private String nome;
     private String ano;
     private String local;
 
-    /**
-     * cria filme
-     * @param nome nome do filme
-     * @param ano ano do filme
-     * @param local local do filme
-     */
     public Filme(String nome, String ano, String local) {
         this.nome = nome;
         this.ano = ano;
