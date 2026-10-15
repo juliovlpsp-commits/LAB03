@@ -1,5 +1,4 @@
 ﻿@startuml FilmNow
-left to right direction
 skinparam backgroundColor #121212
 skinparam shadowing false
 skinparam ArrowColor #BBBBBB
@@ -11,45 +10,53 @@ skinparam ClassStereotypeFontColor #90CAF9
 skinparam ClassHeaderBackgroundColor #252525
 skinparam PackageBackgroundColor #121212
 skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam nodesep 80
+skinparam ranksep 50
 
-class FilmNow {
-  - filmes : Filme[100]
-  - hotList : HotList
-  - scanner : Scanner
-  + FilmNow()
-  + executar() : void
-  + exibirMenu() : void
-  + adicionarFilme() : void
-  + mostrarTodos() : void
-  + detalharFilme() : void
-  + exibirHotList() : void
-  + atribuirHot() : void
-  + removerHot() : void
+package "com.filmnow" {
+  class FilmNow {
+    - filmes : Filme[100]
+    - hotList : HotList
+    - scanner : Scanner
+    + FilmNow()
+    + executar() : void
+    + exibirMenu() : void
+    + adicionarFilme() : void
+    + mostrarTodos() : void
+    + detalharFilme() : void
+    + exibirHotList() : void
+    + atribuirHot() : void
+    + removerHot() : void
+  }
+
+  class Filme {
+    - nome : String
+    - ano : String
+    - local : String
+    + Filme(nome: String, ano: String, local: String)
+    + getNome() : String
+    + getAno() : String
+    + getLocal() : String
+    + equals(obj: Object) : boolean
+    + hashCode() : int
+    + toString() : String
+  }
+
+  class HotList {
+    - filmes : Filme[10]
+    + HotList()
+    + adicionar(filme: Filme, posicao: int) : void
+    + remover(posicao: int) : void
+    + contem(filme: Filme) : boolean
+    + listar() : String
+  }
+
+  FilmNow -[hidden]D-> HotList
+  FilmNow -[hidden]D-> Filme
 }
 
-class Filme {
-  - nome : String
-  - ano : String
-  - local : String
-  + Filme(nome: String, ano: String, local: String)
-  + getNome() : String
-  + getAno() : String
-  + getLocal() : String
-  + equals(obj: Object) : boolean
-  + hashCode() : int
-  + toString() : String
-}
-
-class HotList {
-  - filmes : Filme[10]
-  + HotList()
-  + adicionar(filme: Filme, posicao: int) : void
-  + remover(posicao: int) : void
-  + contem(filme: Filme) : boolean
-  + listar() : String
-}
-
-FilmNow "1" *-- "100" Filme : contains >
-FilmNow "1" *-- "1" HotList : contains >
-HotList "1" o-- "0..10" Filme : references >
+FilmNow "1" *-- "100" Filme
+FilmNow "1" *-- "1" HotList
+HotList "1" o-- "0..10" Filme
 @enduml
