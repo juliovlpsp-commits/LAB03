@@ -125,7 +125,7 @@ public class FilmNow {
         Filme filme = filmes[posicao - 1];
         boolean isHot = hotList.contem(filme);
 
-        String prefixo = isHot ? "HOT " : "";
+        String prefixo = isHot ? "🔥 " : "";
         System.out.println(prefixo + filme.getNome() + ", " + filme.getAno());
         System.out.println(filme.getLocal());
     }

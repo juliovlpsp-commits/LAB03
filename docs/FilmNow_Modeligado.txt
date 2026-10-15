@@ -8,13 +8,13 @@ composes HotList
 ---
 + FilmNow()
 + executar(): void
-+ exibirMenu(): void
-+ adicionarFilme(): void
-+ mostrarTodos(): void
-+ detalharFilme(): void
-+ exibirHotList(): void
-+ atribuirHot(): void
-+ removerHot(): void
+- exibirMenu(): void
+- adicionarFilme(): void
+- mostrarTodos(): void
+- detalharFilme(): void
+- exibirHotList(): void
+- atribuirHot(): void
+- removerHot(): void
 ---
 
 Filme
@@ -33,7 +33,7 @@ Filme
 ---
 
 HotList
-composes Filme
+aggregates Filme
 ---
 - filmes: Filme[10]
 ---

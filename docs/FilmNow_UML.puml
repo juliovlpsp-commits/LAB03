@@ -9,6 +9,12 @@ skinparam ClassFontColor #E0E0E0
 skinparam ClassAttributeFontColor #E0E0E0
 skinparam ClassStereotypeFontColor #90CAF9
 skinparam ClassHeaderBackgroundColor #252525
+skinparam NoteBackgroundColor #2C2C2C
+skinparam NoteBorderColor #444444
+skinparam NoteFontColor #E0E0E0
+skinparam PackageBackgroundColor #1E1E1E
+skinparam PackageBorderColor #3A3A3A
+skinparam PackageFontColor #E0E0E0
 skinparam classAttributeIconSize 0
 
 class FilmNow {
@@ -17,13 +23,13 @@ class FilmNow {
   - scanner : Scanner
   + FilmNow()
   + executar() : void
-  + exibirMenu() : void
-  + adicionarFilme() : void
-  + mostrarTodos() : void
-  + detalharFilme() : void
-  + exibirHotList() : void
-  + atribuirHot() : void
-  + removerHot() : void
+  - exibirMenu() : void
+  - adicionarFilme() : void
+  - mostrarTodos() : void
+  - detalharFilme() : void
+  - exibirHotList() : void
+  - atribuirHot() : void
+  - removerHot() : void
 }
 
 class Filme {
